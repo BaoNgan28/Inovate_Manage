@@ -94,14 +94,14 @@ namespace Inovate_Manage
         {
             for (int i = 0; i < Data.Gi().Title_Student.Length; i++)
             {
-                Print(Data.Gi().Title_Student[i], 50 + (i * 15), 1, ConsoleColor.Cyan);
+                Print(Data.Gi().Title_Student[i], 29 + (i * 15), 12, ConsoleColor.Cyan);
             }
         }
         public void ShowTitleTeacher()
         {
             for (int i = 0; i < Data.Gi().Title_Teacher.Length; i++)
             {
-                Print(Data.Gi().Title_Teacher[i], 50 + (i * 10), 1, ConsoleColor.Cyan);
+                Print(Data.Gi().Title_Teacher[i], 40 + (i * 15), 12, ConsoleColor.Cyan);
             }
         }
         //hiện list giảng viên
@@ -114,11 +114,10 @@ namespace Inovate_Manage
                 if (i == Data.Gi().pTeacher)
                 {
                     Print($"<> {teachers[i].FullName} <>", sizeX / 2 - 30, i + 2, ConsoleColor.Red);
-                    Print("                                        ", 50, 0);
-                    Print(teachers[i].FullName, 50, 0, ConsoleColor.DarkRed);
-                    Print(teachers[i].Id.ToString(), sizeX / 2, 2, ConsoleColor.White);
-                    Print(teachers[i].Age.ToString(), sizeX / 2 + 10, 2, ConsoleColor.White);
-                    Print(teachers[i].Subject, sizeX / 2 + 20, 2, ConsoleColor.White);
+                    Print(teachers[i].FullName, 55, 10, ConsoleColor.DarkRed);
+                    Print(teachers[i].Id.ToString(), 40 , 13, ConsoleColor.White);
+                    Print(teachers[i].Gender.ToString(), 55 , 13, ConsoleColor.White);
+                    Print(teachers[i].Subject, 70 , 13, ConsoleColor.White);
                 }
             }
         }
@@ -131,13 +130,13 @@ namespace Inovate_Manage
                 Print(students[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
                 if (Data.Gi().pStudent == i)
                 {
-                    Print(students[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.Red);
-                    Print("                                        ", 50, 0);
-                    Print(students[i].FullName, 50, 0, ConsoleColor.DarkRed);
-                    Print(students[i].Id.ToString(), sizeX / 2, 2, ConsoleColor.White);
-                    Print(students[i].Age.ToString(), sizeX / 2 + 15, 2, ConsoleColor.White);
-                    Print(students[i].Class, sizeX / 2 + 30, 2, ConsoleColor.White);
-                    Print(students[i].GPA.ToString(), sizeX / 2 + 45, 2, students[i].Passing() ? ConsoleColor.Green : ConsoleColor.Red);
+                    Print($"<> {students[i].FullName} <>", sizeX / 2 - 30, i + 2, ConsoleColor.Red);
+                    Print(students[i].FullName, 50,10, ConsoleColor.DarkRed);
+                    Print(students[i].Id.ToString(), 29 , 13, ConsoleColor.White);
+                    Print(students[i].Gender.ToString(), 47, 13, ConsoleColor.White);
+                    Print(students[i].Age.ToString(), 60, 13, ConsoleColor.White);
+                    Print(students[i].Class, 73, 13, ConsoleColor.White);
+                    Print(students[i].GPA.ToString(), 89, 13, students[i].Passing() ? ConsoleColor.Green : ConsoleColor.Red);
                 }
             }
         }

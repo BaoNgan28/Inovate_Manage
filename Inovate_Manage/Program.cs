@@ -12,7 +12,6 @@ namespace Inovate_Manage
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
-            Function.gi();
         }
     }
 }
