@@ -27,7 +27,7 @@ namespace Inovate_Manage
             return gI;
         }
         //Tiêu đề
-        public string[] Solution = { "Giảng Viên", "Học Sinh", "Thoát" };
+        public string[] Solution = { "Giảng Viên", "Học Sinh", "Tuỳ Chỉnh", "Thoát" };
         public string[] Title_Student = { "ID", "Giới Tính", "Tuổi", "Lớp", "GPA" };
         public string[] Title_Teacher = { "ID", "Giới Tính", "Môn Dạy" };
         public string[] supChucnang = { "DANH SÁCH GIẢNG VIÊN", "DANH SÁCH HỌC SINH" };
