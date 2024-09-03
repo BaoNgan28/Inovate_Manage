@@ -72,42 +72,14 @@ namespace Inovate_Manage
         }
 
         //di chuyển (trái phải viết trong hàm luôn)
-        public static void Move(string[] solution, string[] function, List<Student> student, List<Teacher> teacher)
-        {
-            var data = Data.Gi();
-            data.Add_Data();
-            while (true)
-            {
-                Console.Clear();
-                Terminal.gi().ShowMenuSolution();
-                data.pSolution = HandleKey(data.Solution, data.pSolution);
-
-                switch (data.pSolution)
-                {
-                    case 0: //nếu pSolution = 0 hiển thị ds giảng viên
-
-                        break;
-
-                    case 1: //nếu pSolution = 1 hiển thị ds sinh viên
-                        break;
-
-                    case 2: //nếu pSolution = 2 hiển thị ds tuỳ chỉnh
-                        break;
-
-                    case 3: //pSolution = 3 thì hiển thị Stop
-                        break;
-                }
-            }
-        }
         public void MainLoop()
         {
-            while (IsRunning)
+            while(true)
             {
+                //không hỉu chỗ này
                 Console.Clear();
                 var data = Data.Gi();
-                data.Add_Data();
                 Terminal.gi().ShowMenuSolution();
-                data.pSolution = HandleKey(data.Solution, data.pSolution);
                 if (data.pSolution == 0)
                 {
                     Terminal.gi().ShowMenuTeacher(data.Teachers);
@@ -116,14 +88,15 @@ namespace Inovate_Manage
                 {
                     Terminal.gi().ShowMenuStudent(data.Students);
                 }
-                else if (data.pSolution == 2)
+                else if(data.pSolution == 2)
                 {
                     Terminal.gi().ShowMenuFunction();
                 }
                 else
                 {
-                    stop();
+                    //Thoát
                 }
+                data.pSolution = HandleKey(data.Solution, data.pSolution); 
             }
         }
     }
