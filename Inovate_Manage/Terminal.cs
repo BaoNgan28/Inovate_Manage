@@ -83,11 +83,12 @@ namespace Inovate_Manage
         {
             for (int i = 0; i < Data.Gi().Solution.Length; i++)
             {
-                Print(Data.Gi().Solution[i], 2, i + 2, ConsoleColor.Green);
                 if (i == Data.Gi().pSolution)
                 {
                     Print($"<>{Data.Gi().Solution[i]}<>", 2, i + 2, ConsoleColor.Red);
                 }
+                else
+                    Print(Data.Gi().Solution[i], 2, i + 2, ConsoleColor.Green);
             }
         }
         public void ShowTitleStudent()
@@ -108,6 +109,7 @@ namespace Inovate_Manage
         public void ShowMenuTeacher(List<Teacher> teachers)
         {
             ShowTitleTeacher();
+            Terminal.Print("DANH SÁCH GIẢNG VIÊN", 20, 1, ConsoleColor.Cyan);
             for (int i = 0; i < teachers.Count; i++)
             {
                 Print(teachers[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
