@@ -148,11 +148,11 @@ namespace Inovate_Manage
             Terminal.gi().ShowMenuStudent(data.Students);
             if(data.pFunction == 1)
             {
-                Terminal.Print("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN SỬA", 3, data.Students.Count + 11);
+                Terminal.Print_Random("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN SỬA", 3, data.Students.Count + 11);
             }
             else if(data.pFunction == 2)
             {
-                Terminal.Print("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN XOÁ", 3, data.Students.Count + 11);
+                Terminal.Print_Random("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN XOÁ", 3, data.Students.Count + 11);
             }
             
         }
