@@ -22,7 +22,7 @@ namespace Inovate_Manage
         }
         public Function()
         {
-            
+
         }
         public void Add_StudentToList()
         {
@@ -38,7 +38,7 @@ namespace Inovate_Manage
                 Console.SetCursorPosition(45, 3);
 
                 string idInput = Console.ReadLine();
-                if (uint.TryParse(idInput, out ID) && idInput.Length == 10)
+                if (uint.TryParse(idInput, out ID) && idInput.Length == 10 && FindStudentById(ID) == null)  //Tryparse: chuyển chuỗi vừa nhập thành kiểu dữ liệu của ID
                 {
                     Console.SetCursorPosition(0, 4);
                     Console.Write(new string(' ', Console.WindowWidth));
@@ -46,8 +46,11 @@ namespace Inovate_Manage
                 }
                 else
                 {
-                    // ID không hợp lệ
-                    Terminal.Print("Nhập chưa đúng. Xoá và nhập lại!", 0, 4);
+                    //if (FindStudentById(ID) != null)
+                    //{
+                    //    Terminal.Print("TRÙNG ID. Xoá và nhập lại!", 0, 4);
+                    //}
+                    Terminal.Print("ID TRÙNG hoặc NHẬP SAI. Xoá và nhập lại!", 0, 4);
                     Console.SetCursorPosition(45, 4);
                 }
             }
@@ -146,15 +149,15 @@ namespace Inovate_Manage
             data.pSolution = 1;
             data.pStudent = Handle.HandleKey(data.Students, data.pStudent, key);
             Terminal.gi().ShowMenuStudent(data.Students);
-            if(data.pFunction == 1)
+            if (data.pFunction == 1)
             {
                 Terminal.Print_Random("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN SỬA", 3, data.Students.Count + 11);
             }
-            else if(data.pFunction == 2)
+            else if (data.pFunction == 2)
             {
                 Terminal.Print_Random("DI CHUYỂN LÊN XUỐNG ĐỂ CHỌN SINH VIÊN CẦN XOÁ", 3, data.Students.Count + 11);
             }
-            
+
         }
         public void ChangeStudent()
         {
@@ -224,7 +227,7 @@ namespace Inovate_Manage
             var data = Data.Gi();
             var sv = data.Students[data.pStudent];
             if (sv != null)
-            {  
+            {
                 data.Students.Remove(sv);
                 Console.Clear();
                 Handle.LoaderSpinner(13, 55);
