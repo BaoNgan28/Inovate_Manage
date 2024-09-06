@@ -94,128 +94,135 @@ namespace Inovate_Manage
 
         // Hiệu ứng đánh chữ
         public static void EffectPrint(string s, int x, int y, ConsoleColor color = ConsoleColor.White, int time = 100)
-    {
-        string current = "";
-        foreach (char c in s)
         {
-            current += c;
-            Print(current, x, y, color);
-            Thread.Sleep(time);
+            string current = "";
+            foreach (char c in s)
+            {
+                current += c;
+                Print(current, x, y, color);
+                Thread.Sleep(time);
+            }
         }
-    }
 
-    // Hiệu ứng đánh chữ random màu
-    public static void EffectRandome(string s, int x, int y, int time = 100)
-    {
-        ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Magenta, ConsoleColor.Cyan, ConsoleColor.Green,
+        // Hiệu ứng đánh chữ random màu
+        public static void EffectRandome(string s, int x, int y, int time = 100)
+        {
+            ConsoleColor[] colors = { ConsoleColor.Red, ConsoleColor.Magenta, ConsoleColor.Cyan, ConsoleColor.Green,
                                       ConsoleColor.DarkBlue, ConsoleColor.DarkYellow };
-        Random random = new Random();
-        for (int i = 0; i < s.Length; i++)
-        {
-            Console.SetCursorPosition(x + i, y);
-            int index = random.Next(colors.Length);
-            Console.ForegroundColor = colors[index];
-            Console.Write(s[i]);
-            Thread.Sleep(time);
-        }
-    }
-
-    // Hiện menu lựa chọn
-    public void ShowMenuSolution()
-    {
-        var data = Data.Gi(); // Sử dụng biến cục bộ để lưu trữ đối tượng Data
-        for (int i = 0; i < data.Solution.Length; i++)
-        {
-            if (i == data.pSolution)
+            Random random = new Random();
+            for (int i = 0; i < s.Length; i++)
             {
-                Print($"<>{data.Solution[i]}<>", 2, i + 2, ConsoleColor.Red);
-            }
-            else
-            {
-                Print(data.Solution[i], 2, i + 2, ConsoleColor.Green);
+                Console.SetCursorPosition(x + i, y);
+                int index = random.Next(colors.Length);
+                Console.ForegroundColor = colors[index];
+                Console.Write(s[i]);
+                Thread.Sleep(time);
             }
         }
-    }
-
-    public void ShowTitleStudent()
-    {
-        var data = Data.Gi();
-        for (int i = 0; i < data.Title_Student.Length; i++)
+        public void Delete_Key(string item, int x, int y)
         {
-            Print(data.Title_Student[i], 29 + (i * 15), 12, ConsoleColor.Cyan);
+            Print(new string(' ', item.Length + 10), x, y); 
         }
-    }
-
-    public void ShowTitleTeacher()
-    {
-        var data = Data.Gi();
-        for (int i = 0; i < data.Title_Teacher.Length; i++)
+        // Hiện menu lựa chọn
+        public void ShowMenuSolution()
         {
-            Print(data.Title_Teacher[i], 35 + (i * 15), 12, ConsoleColor.Cyan);
-        }
-    }
-
-    // Hiện list giảng viên
-    public void ShowMenuTeacher(List<Teacher> teachers)
-    {
-        var data = Data.Gi();
-        ShowTitleTeacher();
-        Terminal.Print("DANH SÁCH GIẢNG VIÊN", 20, 1, ConsoleColor.Cyan);
-        for (int i = 0; i < teachers.Count; i++)
-        {
-            Print(teachers[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
-        }
-
-        // In chi tiết nếu i == pTeacher
-        var pTeacher = data.pTeacher;
-        if (pTeacher >= 0 && pTeacher < teachers.Count)
-        {
-            Print($"<> {teachers[pTeacher].FullName} <>", sizeX / 2 - 30, pTeacher + 2, ConsoleColor.Red);
-            Print(teachers[pTeacher].FullName, 50, 10, ConsoleColor.DarkRed);
-            Print(teachers[pTeacher].Id.ToString(), 35, 13, ConsoleColor.White);
-            Print(teachers[pTeacher].Gender.ToString(), 50, 13, ConsoleColor.White);
-            Print(teachers[pTeacher].Subject, 65, 13, ConsoleColor.White);
-        }
-    }
-
-    // Hiện list sinh viên
-    public void ShowMenuStudent(List<Student> students)
-    {
-
-        var data = Data.Gi();
-        Terminal.Print("DANH SÁCH SINH VIÊN", 20, 1, ConsoleColor.Cyan);
-        ShowTitleStudent();
-        for (int i = 0; i < students.Count; i++)
-        {
-            Print(students[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
-        }
-
-        // In chi tiết nếu i == pStudent
-        var pStudent = data.pStudent;
-        if (pStudent >= 0 && pStudent < students.Count)
-        {
-            Print($"<> {students[pStudent].FullName} <>", sizeX / 2 - 30, pStudent + 2, ConsoleColor.Red);
-            Print(students[pStudent].FullName, 50, 10, ConsoleColor.DarkRed);
-            Print(students[pStudent].Id.ToString(), 29, 13, ConsoleColor.White);
-            Print(students[pStudent].Gender.ToString(), 47, 13, ConsoleColor.White);
-            Print(students[pStudent].Age.ToString(), 60, 13, ConsoleColor.White);
-            Print(students[pStudent].Class, 73, 13, ConsoleColor.White);
-            Print(students[pStudent].GPA.ToString(), 89, 13, students[pStudent].Passing() ? ConsoleColor.Green : ConsoleColor.Red);
-        }
-    }
-
-    // Hiện các chức năng
-    public void ShowMenuFunction()
-    {
-        var data = Data.Gi();
-        for (int i = 0; i < data.Function.Length; i++)
-        {
-            Print(data.Function[i], sizeX / 2 - 30, i + 2, ConsoleColor.White); // Sửa lại vị trí
-            if (i == data.pFunction)
+            var data = Data.Gi(); 
+            for (int i = 0; i < data.Solution.Length; i++)
             {
-                Print($"<> {data.Function[i]} <>", sizeX / 2 - 30, i + 2, ConsoleColor.Red);
+                if (i == data.pSolution)
+                {
+                    Print($"<>{data.Solution[i]}<>", 2, i + 2, ConsoleColor.Red);
+                }
+                else
+                {
+                    Delete_Key(data.Solution[i], 2, i + 2); ///xoá in đè
+                    Print(data.Solution[i], 2, i + 2, ConsoleColor.Green);
+                }
+            }
+        }
+
+        public void ShowTitleStudent()
+        {
+            var data = Data.Gi();
+            for (int i = 0; i < data.Title_Student.Length; i++)
+            {
+                Print(data.Title_Student[i], 29 + (i * 15), 12, ConsoleColor.Cyan);
+            }
+        }
+
+        public void ShowTitleTeacher()
+        {
+            var data = Data.Gi();
+            for (int i = 0; i < data.Title_Teacher.Length; i++)
+            {
+                Print(data.Title_Teacher[i], 35 + (i * 15), 12, ConsoleColor.Cyan);
+            }
+        }
+
+        // Hiện list giảng viên
+        public void ShowMenuTeacher(List<Teacher> teachers)
+        {
+            var data = Data.Gi();
+            ShowTitleTeacher();
+            Terminal.Print("DANH SÁCH GIẢNG VIÊN", 20, 1, ConsoleColor.Cyan);
+            for (int i = 0; i < teachers.Count; i++)
+            {
+                Delete_Key(teachers[i].FullName,sizeX / 2 - 30, i + 2);
+                Print(teachers[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
+                if (i == data.pTeacher)
+                {
+                    Print($"<> {teachers[data.pTeacher].FullName} <>", sizeX / 2 - 30, data.pTeacher + 2, ConsoleColor.Red);
+                    Delete_Key(teachers[data.pTeacher].FullName, 50, 10);
+                    Print(teachers[data.pTeacher].FullName, 50, 10, ConsoleColor.DarkRed);
+                    Print(teachers[data.pTeacher].Id.ToString(), 35, 13, ConsoleColor.White);
+                    Delete_Key(teachers[data.pTeacher].Gender.ToString(), 50, 13);
+                    Print(teachers[data.pTeacher].Gender.ToString(), 50, 13, ConsoleColor.White);
+                    Delete_Key(teachers[data.pTeacher].Subject, 65, 13);
+                    Print(teachers[data.pTeacher].Subject, 65, 13, ConsoleColor.White);
+                }
+            }
+        }
+
+        // Hiện list sinh viên
+        public void ShowMenuStudent(List<Student> students)
+        {
+
+            var data = Data.Gi();
+            Terminal.Print("DANH SÁCH SINH VIÊN", 20, 1, ConsoleColor.Cyan);
+            ShowTitleStudent();
+            for (int i = 0; i < students.Count; i++)
+            {
+                Delete_Key(students[i].FullName, sizeX / 2 - 30, i + 2);
+                Print(students[i].FullName, sizeX / 2 - 30, i + 2, ConsoleColor.White);
+                if (i == data.pStudent)
+                {
+                    Print($"<> {students[data.pStudent].FullName} <>", sizeX / 2 - 30, data.pStudent + 2, ConsoleColor.Red);
+                    Delete_Key(students[data.pStudent].FullName, 50, 10);
+                    Print(students[data.pStudent].FullName, 50, 10, ConsoleColor.DarkRed);
+                    Print(students[data.pStudent].Id.ToString(), 29, 13, ConsoleColor.White);
+                    Delete_Key(students[data.pStudent].Gender.ToString(), 47, 13);
+                    Print(students[data.pStudent].Gender.ToString(), 47, 13, ConsoleColor.White);
+                    Print(students[data.pStudent].Age.ToString(), 60, 13, ConsoleColor.White);
+                    Print(students[data.pStudent].Class, 73, 13, ConsoleColor.White);
+                    Print(students[data.pStudent].GPA.ToString(), 89, 13, students[data.pStudent].Passing() ? ConsoleColor.Green : ConsoleColor.Red);
+                }
+            }
+            
+        }
+
+        // Hiện các chức năng
+        public void ShowMenuFunction()
+        {
+            var data = Data.Gi();
+            for (int i = 0; i < data.Function.Length; i++)
+            {
+                Delete_Key(data.Function[i], sizeX / 2 - 30, i + 2);
+                Print(data.Function[i], sizeX / 2 - 30, i + 2, ConsoleColor.White); // Sửa lại vị trí
+                if (i == data.pFunction)
+                {
+                    Print($"<> {data.Function[i]} <>", sizeX / 2 - 30, i + 2, ConsoleColor.Red);
+                }
             }
         }
     }
-}
 }

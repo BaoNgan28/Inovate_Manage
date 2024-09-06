@@ -96,21 +96,18 @@ namespace Inovate_Manage
                         if (data.pSolution == 0)
                         {
                             data.pTeacher = HandleKey(data.Teachers, data.pTeacher, key);
-                            Console.Clear();
                             Terminal.gi().ShowMenuSolution();
                             Terminal.gi().ShowMenuTeacher(data.Teachers);
                         }
                         else if (data.pSolution == 1)
                         {
                             data.pStudent = HandleKey(data.Students, data.pStudent, key);
-                            Console.Clear();
                             Terminal.gi().ShowMenuSolution();
                             Terminal.gi().ShowMenuStudent(data.Students);
                         }
                         else if (data.pSolution == 2)
                         {
                             data.pFunction = HandleKey(data.Function, data.pFunction, key);
-                            Console.Clear();
                             Terminal.gi().ShowMenuSolution();
                             Terminal.gi().ShowMenuFunction();
                         }
