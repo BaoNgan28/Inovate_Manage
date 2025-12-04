@@ -12,14 +12,6 @@ namespace Inovate_Manage
     {
         //thêm sinh viên
         private static Function gI;
-        public static Function gi()
-        {
-            if (gI == null)
-            {
-                gI = new Function();
-            }
-            return gI;
-        }
         public Function()
         {
 
